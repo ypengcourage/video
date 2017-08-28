@@ -12,24 +12,36 @@
     <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
- 	<style>
-	#bobo1{
-	position: relative;
-	margin:200px auto;
-	background: white;
-	width: 350px;
-	height: 240px;
-	border-radius:15px;
-	} 
- 	</style>
- 	<script type="text/javascript">
-		function delete1(){
-	   var orConfirm =	confirm("确定要删除此条记录吗?");
-	   return (orConfirm); 
-	   //第一个参数表示提示框的标题,第二个参数表示框中文本框的内容,两个都可以省略
-	   //返回值表示提示框中的输入框内容,只有点击确定以后才会进行返回
-	}
-</script>
+    <link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
+	<script type="text/javascript">
+	$(function(){
+ 		$(".bobo01").click(function(){
+		 	var aa = this.id;
+		 	$.confirm({
+		 		title: '警告',
+		 	    content: '你确定要删除此条记录吗?',
+		 	    buttons: {
+		 	    	确定删除 : function () {
+		 	    		 $.get(
+		 	    			"${pageContext.request.contextPath }/speaker/deleteSpeaker.action",
+		 	    			"id="+aa,
+		 	    			function (mag){
+		 	    				if(mag=="success"){
+		 	    					location.reload();
+		 	    				}
+		 	    			},
+		 	    			"text"
+		 	    		) 
+		 	        },
+		 	       	 取消  : function () {
+		 	            return;
+		 	        }
+		 	    }
+		 	});
+ 		});
+	});
+	</script>
   </head>
   <body>
 	   
@@ -74,7 +86,10 @@
 			          <td>${speaker.speakerJob }</td>
 			          <td>${speaker.speakerDescr }</td>
 			          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/speaker/updateSpeaker.action?id=${speaker.id}"></a></td>
-			          <td><a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/speaker/deleteSpeaker.action?id=${speaker.id}" onclick="return delete1()"></a></td>
+			          <td>
+			          <%-- <a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/speaker/deleteSpeaker.action?id=${speaker.id}" onclick="return delete1()"></a> --%>
+			          <a class="glyphicon glyphicon-trash bobo01" id="${speaker.id}"></a>
+			          </td>
 			        </tr>
 			      </c:forEach>
 			      </tbody>

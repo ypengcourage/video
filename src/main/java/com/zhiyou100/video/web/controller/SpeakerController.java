@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhiyou100.video.model.Speaker;
@@ -52,9 +53,10 @@ public class SpeakerController {
 		return "redirect:/speaker/speakerList.action";
 	}
 	@RequestMapping("deleteSpeaker.action")
+	@ResponseBody
 	public String deleteSpeaker(Integer id) {
 		ss.deleteSpeaker(id);
-		return "redirect:/speaker/speakerList.action";
+		return "success";
 	}
 	
 	

@@ -15,33 +15,26 @@
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
     <link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
 	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
- 	<style>
-	#bobo1{
-	position: relative;
-	margin:200px auto;
-	background: white;
-	width: 350px;
-	height: 240px;
-	border-radius:15px;
-	} 
- 	</style>
  	<script type="text/javascript">
  	var count=0;
  	$(function(){
  		$(".bobo01").click(function(){
-		 	var aa = this.name;
+		 	var aa = this.id;
 		 	$.confirm({
 		 		title: '警告',
 		 	    content: '你确定要删除此条记录吗?',
 		 	    buttons: {
 		 	    	确定删除 : function () {
-		 	    		$.get(
+		 	    		 $.get(
 		 	    			"${pageContext.request.contextPath }/video/deleteVideo.action",
 		 	    			"id="+aa,
-		 	    			function (){
-		 	    				location.reload();
-		 	    			}
-		 	    		)
+		 	    			function (mag){
+		 	    				if(mag=="success"){
+		 	    					location.reload();
+		 	    				}
+		 	    			},
+		 	    			"text"
+		 	    		) 
 		 	        },
 		 	       	 取消  : function () {
 		 	            return;
@@ -192,27 +185,32 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			        <c:forEach items="${page.rows }" var="video" varStatus="status">
-				        <tr>
-				          <th scope="row"><input type="checkbox" name="xuanze" value="${video.id}"></th>
-				          <td>${status.count+(page.page-1)*5}</td>
-				          <td>${video.videoTitle }</td>
-				          <td>${video.videoDescr }</td>
-				          <td>${video.speakerName }</td>
-				          <td>${video.courseName }</td>
-				          <td>${video.videoLength }</td>
-				          <td>${video.videoPlayTimes }</td>
-				          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/video/updateVideo.action?id=${video.id }"></a></td>
-				         <%--  <td><a class="glyphicon glyphicon-trash" id="bobo01" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${video.id }" onclick="return delete1()"></a></td> --%>
-				          <td><a class="glyphicon glyphicon-trash bobo01" name="${video.id }"></a></td>
-				        </tr>
-			        </c:forEach>
+				      <c:if test="${not empty page.rows }">
+				        <c:forEach items="${page.rows }" var="video" varStatus="status">
+					        <tr>
+					          <th scope="row"><input type="checkbox" name="xuanze" value="${video.id}"></th>
+					          <td>${status.count+(page.page-1)*5}</td>
+					          <td>${video.videoTitle }</td>
+					          <td>${video.videoDescr }</td>
+					          <td>${video.speakerName }</td>
+					          <td>${video.courseName }</td>
+					          <td>${video.videoLength }</td>
+					          <td>${video.videoPlayTimes }</td>
+					          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/video/updateVideo.action?id=${video.id }"></a></td>
+					         <%--  <td><a class="glyphicon glyphicon-trash" id="bobo01" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${video.id }" onclick="return delete1()"></a></td> --%>
+					          <td><a class="glyphicon glyphicon-trash bobo01" id="${video.id }"></a></td>
+					        </tr>
+				        </c:forEach>
+				      </c:if>
+				      <c:if test="${empty page.rows}">
+				      		<tr><td width="100%">当前页内容为空!</td>
+				      		</tr>
+				      </c:if>
 			      </tbody>
 			    </table>
 			    </form>
 			    <bobo:page url="${pageContext.request.contextPath }/video/videoList.action"></bobo:page>
 			</div>
-			
 		</div>
   </body>
 </html>

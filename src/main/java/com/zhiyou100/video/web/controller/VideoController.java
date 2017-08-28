@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.zhiyou100.video.model.Course;
@@ -86,9 +87,10 @@ public class VideoController {
 		return "redirect:/video/videoList.action";
 	}
 	@RequestMapping("/deleteVideo.action")
+	@ResponseBody
 	public String deleteVideo(int id){
 		vs.deleteVideo(id);
-		return "redirect:/video/videoList.action";
+		return "success";
 	}
 	@RequestMapping("/deleteAllVideo.action")
 	public String deleteVideoByIds(Integer [] xuanze){

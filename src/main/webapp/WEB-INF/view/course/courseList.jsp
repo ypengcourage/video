@@ -12,16 +12,36 @@
     <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
- 	<style>
-	#bobo1{
-	position: relative;
-	margin:200px auto;
-	background: white;
-	width: 350px;
-	height: 240px;
-	border-radius:15px;
-	} 
- 	</style>
+    <link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
+	<script type="text/javascript">
+	$(function(){
+ 		$(".bobo01").click(function(){
+		 	var aa = this.id;
+		 	$.confirm({
+		 		title: '警告',
+		 	    content: '你确定要删除此条记录吗?',
+		 	    buttons: {
+		 	    	确定删除 : function () {
+		 	    		 $.get(
+		 	    			"${pageContext.request.contextPath }/course/deleteCourse.action",
+		 	    			"id="+aa,
+		 	    			function (mag){
+		 	    				if(mag=="success"){
+		 	    					location.reload();
+		 	    				}
+		 	    			},
+		 	    			"text"
+		 	    		) 
+		 	        },
+		 	       	 取消  : function () {
+		 	            return;
+		 	        }
+		 	    }
+		 	});
+ 		});
+	});
+	</script>
   </head>
   <body>
 	   
@@ -47,22 +67,30 @@
 			        </tr>
 			      </thead>
 			      <tbody>
-			      <c:forEach items="${page.rows }" var="course" varStatus="status">
-			        <tr>
-			          <th scope="row">${status.count+(page.page-1)*5}</th>
-			          <td >${course.courseName}</td>
-			          <td >${course.subjectName}</td>
-			          <td >${course.courseDescr}</td>
-			          <td><a class="glyphicon glyphicon-edit " href="${pageContext.request.contextPath }/course/updateCourse.action?id=${course.id}"></a></td>
-			          <td><a class="glyphicon glyphicon-trash " href="${pageContext.request.contextPath }/course/deleteCourse.action?id=${course.id}"></a></td>
-			        </tr>
-			        </c:forEach>
+				      <c:if test="${not empty page.rows }">
+					      <c:forEach items="${page.rows }" var="course" varStatus="status">
+						        <tr>
+						          <th scope="row">${status.count+(page.page-1)*5}</th>
+						          <td >${course.courseName}</td>
+						          <td >${course.subjectName}</td>
+						          <td >${course.courseDescr}</td>
+						          <td><a class="glyphicon glyphicon-edit " href="${pageContext.request.contextPath }/course/updateCourse.action?id=${course.id}"></a></td>
+						          <td>
+						          <%-- <a class="glyphicon glyphicon-trash " href="${pageContext.request.contextPath }/course/deleteCourse.action?id=${course.id}"></a> --%>
+						          <a class="glyphicon glyphicon-trash bobo01" id="${course.id}"></a>
+						          </td>
+						        </tr>
+					        </c:forEach>
+					  </c:if>
+					  <c:if test="${empty page.rows }">
+					  		<tr>
+					  			<td width="100%">当前页内容为空!</td>
+					  		</tr>
+					  </c:if>
 			      </tbody>
 			    </table>
 			    <goubo:page url="${pageContext.request.contextPath }/course/courseList.action"></goubo:page>
 			</div>
-	    
-
 		</div>
   </body>
 </html>
