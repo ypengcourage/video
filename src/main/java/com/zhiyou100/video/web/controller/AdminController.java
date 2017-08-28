@@ -27,7 +27,7 @@ public class AdminController {
 		Admin admin = as.login(ad);
 		if (admin != null) {
 			req.getSession().setAttribute("admin", admin);
-			str = "forward:/admin.jsp";
+			str = "forward:/video/videoList.action";
 		}else{
 			md.addAttribute("error","用户名或密码错误");
 			str = "forward:/login.jsp";

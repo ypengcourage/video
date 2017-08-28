@@ -131,7 +131,9 @@
 	</script>
   </head>
   <body>
-	   
+	   	<jsp:include page="/admin.jsp">
+			<jsp:param value="video" name="fromJsp"/>
+		</jsp:include>
 	    
 	    <div class="container theme-showcase" role="main">
 	    	

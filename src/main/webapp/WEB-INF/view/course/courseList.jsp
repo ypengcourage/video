@@ -45,7 +45,9 @@
   </head>
   <body>
 	   
-	    
+	    	   	<jsp:include page="/admin.jsp">
+					<jsp:param value="course" name="fromJsp"/>
+				</jsp:include>
 	    <div class="container theme-showcase" role="main">
 	    	
 		    <div class="jumbotron">

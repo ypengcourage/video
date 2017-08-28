@@ -28,10 +28,10 @@
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
-	            <li><a href="${pageContext.request.contextPath }/video/videoList.action" target="pageBox" >视频管理</a></li>
-	            <li><a href="${pageContext.request.contextPath }/speaker/speakerList.action" target="pageBox">主讲人管理</a></li>
-	            <li><a href="${pageContext.request.contextPath }/course/courseList.action" target="pageBox">课程管理</a></li>
-				<li><a href="${pageContext.request.contextPath }/video/statshow.action" target="pageBox">统计分析</a></li>
+	            <li ${param.fromJsp=="video"?"class='active'":""}><a  href="${pageContext.request.contextPath }/video/videoList.action">视频管理</a></li>
+	            <li ${param.fromJsp=="speaker"?"class='active'":""}><a href="${pageContext.request.contextPath }/speaker/speakerList.action">主讲人管理</a></li>
+	            <li ${param.fromJsp=="course"?"class='active'":""}><a href="${pageContext.request.contextPath }/course/courseList.action">课程管理</a></li>
+				<li ${param.fromJsp=="statistics"?"class='active'":""}><a href="${pageContext.request.contextPath }/video/statshow.action">统计分析</a></li>
 	          </ul>
 	        
 		      <div id="navbar" class="navbar-collapse collapse">
@@ -44,8 +44,6 @@
 	      </div>
 	    </nav>
 	    
-		<div class="embed-responsive embed-responsive-4by3">
-			  <iframe class="embed-responsive-item" src="${pageContext.request.contextPath }/video/videoList.action" name="pageBox"></iframe>
-		</div>
+
   </body>
 </html>

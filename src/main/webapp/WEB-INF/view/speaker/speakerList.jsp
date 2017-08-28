@@ -44,7 +44,9 @@
 	</script>
   </head>
   <body>
-	   
+	   	  		<jsp:include page="/admin.jsp">
+					<jsp:param value="speaker" name="fromJsp"/>
+				</jsp:include>
 	    
 	    <div class="container theme-showcase" role="main">
 	    	

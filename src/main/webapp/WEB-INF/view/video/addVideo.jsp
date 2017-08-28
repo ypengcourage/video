@@ -11,19 +11,11 @@
     <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
- 	<style>
-	#bobo1{
-	position: relative;
-	margin:200px auto;
-	background: white;
-	width: 350px;
-	height: 240px;
-	border-radius:15px;
-	} 
- 	</style>
   </head>
   <body>
-	   
+	   	   	<jsp:include page="/admin.jsp">
+				<jsp:param value="video" name="fromJsp"/>
+			</jsp:include>
 	    
 	    <div class="container theme-showcase" role="main">
 	    	

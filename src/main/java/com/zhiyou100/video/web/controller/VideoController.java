@@ -114,7 +114,7 @@ public class VideoController {
 		String str2 = vs.listToArray1(li2);
 		mav.addObject("courseName",str1);
 		mav.addObject("times",str2);
-		mav.setViewName("/stat/test001");
+		mav.setViewName("/stat/stat");
 		return mav;
 	}	
 }

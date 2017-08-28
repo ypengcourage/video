@@ -12,45 +12,65 @@
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
     </head>
 	<body>
+		    <jsp:include page="/admin.jsp">
+					<jsp:param value="course" name="fromJsp"/>
+			</jsp:include>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 	<div class="container theme-showcase" role="main">
-	<br><br><br><br><br><br><br><br><br>
+			<div class="jumbotron">
+		        <h1>统计分析</h1>
+		    </div>
+	
     <div id="main" style="height:600px;"></div>
     <!-- ECharts单文件引入 -->
-    <script src="${pageContext.request.contextPath }/static/echarts/echarts-all.js"></script>
+    <script src="${pageContext.request.contextPath }/static/echarts/dist/echarts.js">
+    </script>
     <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts图表
-        var myChart = echarts.init(document.getElementById('main')); 
-        
-        var option = {
-            tooltip: {
-                show: true
-            },
-            legend: {
-                data:['课程平均播放次数']
-            },
-            xAxis : [
-                {
-                    type : 'category',
-                    data : ${courseName}
+    	require.config({
+	        paths: {
+	            echarts: '${pageContext.request.contextPath }/static/echarts/dist'
+	        }
+    	});
+    	require(
+                [
+                    'echarts',
+                    'echarts/chart/bar' // 使用柱状图就加载bar模块，按需加载
+                ],
+                function (ec) {
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('main')); 
+                    
+                    var option = {
+                        tooltip: {
+                            show: true
+                        },
+                        legend: {
+                            data:['视频平均播放次数']
+                        },
+                        xAxis : [
+                            {
+                                type : 'category',
+                                data : ${courseName}
+                            }
+                        ],
+                        yAxis : [
+                            {
+                                type : 'value'
+                            }
+                        ],
+                        series : [
+                            {
+                                "name":"视频平均播放次数",
+                                "type":"bar",
+                                "data":${times}
+                            }
+                        ]
+                    };
+            
+                    // 为echarts对象加载数据 
+                    myChart.setOption(option); 
                 }
-            ],
-            yAxis : [
-                {
-                    type : 'value'
-                }
-            ],
-            series : [
-                {
-                    "name": "平均播放次数(times)",
-                    "type": "bar",
-                    "data": ${times}
-                }
-            ]
-        };
-
-        // 为echarts对象加载数据 
-        myChart.setOption(option); 
+            );
     </script>
 </div>
 </body>
