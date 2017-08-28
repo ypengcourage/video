@@ -355,29 +355,6 @@
   <select id="findstatavg" resultType="speakerVO">
   		select c.course_name courseName,avg(video_play_times) as times from video v left join course c on c.id = v.course_id group by c.course_name order by c.id asc
   </select>
-  <!-- <delete id="deleteByPrimaryKey">
-		delete from video 
-		<where>
-			<foreach collection="array" open="and id in (" separator="," close=")" item="gouerbo">
-				#{gouerbo}
-			</foreach>
-		</where>
-	</delete> -->
-  
-  
-  
-<!--   <select id="findVideoByPage" parameterType="speakerVO" resultMap="BaseResultMap1">
-  		select v.*,c.course_name courseName,s.speaker_name speakerName from video v,course c,speaker s where v.speaker_id=s.id and v.course_id=c.id and v.video_title like '%' #{videoTitle} '%' limit #{page},5 
-  </select>
-  <select id="findVideoBySpeaker" parameterType="speakerVO" resultMap="BaseResultMap1">
-  		select v.*,c.course_name courseName,s.speaker_name speakerName from video v,course c,speaker s where v.speaker_id=s.id and v.course_id=c.id and v.speaker_id=#{videoSpeaker} and v.video_title like '%' #{videoTitle} '%' limit #{page},5 
-  </select>
-  <select id="findVideoByCourse" parameterType="speakerVO" resultMap="BaseResultMap1">
-  		select v.*,c.course_name courseName,s.speaker_name speakerName from video v,course c,speaker s where v.speaker_id=s.id and v.course_id=c.id and v.course_id=#{videoCourse} and v.video_title like '%' #{videoTitle} '%' limit #{page},5 
-  </select>
-  <select id="findVideoByCourseAndSpeaker" parameterType="speakerVO" resultMap="BaseResultMap1">
-  		select v.*,c.course_name,s.speaker_name from video v,course c,speaker s where v.speaker_id=s.id and v.course_id=c.id and v.speaker_id=#{videoSpeaker} and v.course_id=#{videoCourse} and v.video_title like '%' #{videoTitle} '%' limit #{page},5 
-  </select> -->
   
   
   
