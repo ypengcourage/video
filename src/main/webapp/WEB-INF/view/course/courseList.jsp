@@ -1,0 +1,68 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://zhiyou100.com/common/" prefix="goubo" %>
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录界面</title>
+    <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
+    <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
+ 	<style>
+	#bobo1{
+	position: relative;
+	margin:200px auto;
+	background: white;
+	width: 350px;
+	height: 240px;
+	border-radius:15px;
+	} 
+ 	</style>
+  </head>
+  <body>
+	   
+	    
+	    <div class="container theme-showcase" role="main">
+	    	
+		    <div class="jumbotron">
+		        <h1>课程列表-课程管理</h1>
+		    </div>
+		    
+		    <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath }/course/addCourse.action">添加课程</a>
+		    
+			<div class="bs-example" data-example-id="hoverable-table">
+			    <table class="table table-hover">
+			      <thead>
+			        <tr>
+			          <th class="col-md-0">序号</th>
+			          <th class="col-md-1">标题</th>
+			          <th class="col-md-0">学科</th>
+			          <th class="col-md-10">简介</th>
+			          <th class="col-md-1">编辑</th>
+			          <th >删除</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      <c:forEach items="${page.rows }" var="course" varStatus="status">
+			        <tr>
+			          <th scope="row">${status.count+(page.page-1)*5}</th>
+			          <td >${course.courseName}</td>
+			          <td >${course.subjectName}</td>
+			          <td >${course.courseDescr}</td>
+			          <td><a class="glyphicon glyphicon-edit " href="${pageContext.request.contextPath }/course/updateCourse.action?id=${course.id}"></a></td>
+			          <td><a class="glyphicon glyphicon-trash " href="${pageContext.request.contextPath }/course/deleteCourse.action?id=${course.id}"></a></td>
+			        </tr>
+			        </c:forEach>
+			      </tbody>
+			    </table>
+			    <goubo:page url="${pageContext.request.contextPath }/course/courseList.action"></goubo:page>
+			</div>
+	    
+
+		</div>
+  </body>
+</html>
