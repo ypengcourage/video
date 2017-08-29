@@ -12,8 +12,8 @@
     <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
     <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
     <meta name="author" content="尚忠祥">
-    <link rel="stylesheet" href="static/css/base.css">
-    <link rel="stylesheet" href="static/css/profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/profile.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 </head>
@@ -74,9 +74,9 @@
     <footer>
         <div class="container">
             <ul>
-                <li><img src="static/img/footer_logo.png" alt="" id="foot_logo"></li>
+                <li><img src="${pageContext.request.contextPath }/static/img/footer_logo.png" alt="" id="foot_logo"></li>
                 <li>版权所有：智游3G教育&#x3000;&#x3000;&#x3000;&copy;&nbsp;www.zhiyou100.com</li>
-                <li><img src="static/img/微信公众号.png" alt="" id="wxgzh"></li>
+                <li><img src="${pageContext.request.contextPath }/static/img/微信公众号.png" alt="" id="wxgzh"></li>
             </ul>
         </div>
     </footer>

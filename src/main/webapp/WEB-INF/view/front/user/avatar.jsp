@@ -10,9 +10,9 @@
     <meta name="renderer" content="webkit">
     <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
     <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
-    <link rel="stylesheet" href="static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/base.css">
-    <link rel="stylesheet" href="static/css/profile.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/profile.css">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 </head>
 
@@ -23,28 +23,27 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                <ul class="profile_tab_header f_left clearfix">
-                    <li><a href="front/user/profile.do">更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/profile.do">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/avatar.do">更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/avatar.do">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/password.do">密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/password.do">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     <div class="proflle_tab_workplace clearfix">
                         <div class="profile_avatar_area">
-                            <c:if test="${empty user.headUrl}">
-                                 <img  src="static/img/avatar_lg.png">
+                            <c:if test="${empty _front_user.headUrl}">
+                                 <img  src="${pageContext.request.contextPath }/static/img/avatar_lg.png">
                             </c:if>
                             
-                            <c:if test="${not empty user.headUrl}">
-                                  <img width="200px" height="200px" src="${user.headUrl}">
+                            <c:if test="${not empty _front_user.headUrl}">
+                                  <img width="200px" height="200px" src="${_front_user.headUrl}">
                             </c:if>
-                            
                             
                             <p style="text-align: center;">当前头像</p>
                         </div>
                         <div class="profile_ifo_area">
-                            <form id="upload_form" enctype="multipart/form-data" method="post" action="front/user/avatar.do" >
+                            <form id="upload_form" enctype="multipart/form-data" method="post" action="avatar.do" >
                                 <p>请选择图像文件</p>
                                 <div>
                                 <input type="file" class="form-control" name="image_file" id="image_file" accept="image/png,image/jpeg,image/jpg"/>

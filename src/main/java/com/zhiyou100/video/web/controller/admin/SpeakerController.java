@@ -50,7 +50,7 @@ public class SpeakerController {
 	@RequestMapping(value="updateSpeaker.action",method=RequestMethod.POST)
 	public String updateSpeaker2(Speaker sk) {
 		ss.updateSpeaker(sk);
-		return "redirect:/admin/speaker/speakerList.action";
+		return "redirect:/speaker/speakerList.action";
 	}
 	@RequestMapping("deleteSpeaker.action")
 	@ResponseBody
@@ -58,7 +58,4 @@ public class SpeakerController {
 		ss.deleteSpeaker(id);
 		return "success";
 	}
-	
-	
-	
 }

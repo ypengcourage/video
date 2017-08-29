@@ -28,10 +28,11 @@ $(function(){
 			//ajax提交登录信息，并且返回登录结果
 //			var email = $('#loginEmail').val();
 //			var pwd = $('#loginPassword').val();
-			console.log($('#loginForm').serialize());
+			//console.log($('#loginForm').serialize());
 			//使用ajax的post方法提交登录信息
+			//alert($('#loginForm').serialize());
 			$.post('front/user/login.do',$('#loginForm').serialize(),function(result){
-				console.log(result);
+				//console.log(result);
 				if(result.success){
 					//登录成功,刷新页面
 					location.reload();
@@ -39,7 +40,6 @@ $(function(){
 					alert(result.message);
 				}
 			},'json');
-			
 		},
 		rules:{//写校验规则的
 			email:{

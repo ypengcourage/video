@@ -24,8 +24,8 @@
 				<li class="erwei">
 					<br>
 					<div>
-						<img class="weixin" src="static/img/微信公众号.png" alt="" draggable="false">
-						<img class="weibo" src="static/img/微博公众号.png" alt="" draggable="false">
+						<img class="weixin" src="${pageContext.request.contextPath }/static/img/微信公众号.png" alt="" draggable="false">
+						<img class="weibo" src="${pageContext.request.contextPath }/static/img/微博公众号.png" alt="" draggable="false">
 					</div>
 				</li>
 			</ul>

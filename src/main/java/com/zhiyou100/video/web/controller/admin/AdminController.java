@@ -16,6 +16,7 @@ import com.zhiyou100.video.service.admin.AdminService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+	
 	@Autowired
 	AdminService as;
 	
@@ -23,8 +24,6 @@ public class AdminController {
 	public String login01(){
 		return "/admin/login";
 	}
-	
-	
 	
 	@RequestMapping(value="/login.action",method=RequestMethod.POST)
 	public String login(Admin ad,Model md,HttpServletRequest req){

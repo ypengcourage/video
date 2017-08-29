@@ -12,7 +12,7 @@ public class MailUtil {
 	//修改为自己的qq邮箱账号
 		private static String myEmailAccount = "1250473641@qq.com";
 		//修改为自己的邮箱授权码
-		private static String myEmailPassword = "dkzhytauhmyabfhg";
+		private static String myEmailPassword = "qtoybzvvzfdnhdhf";
 		//如果用qq邮箱不用修改，如果用163邮箱，修改为smtp.163.com
 		private static String myEmailSMTPHost = "smtp.qq.com";
 		
