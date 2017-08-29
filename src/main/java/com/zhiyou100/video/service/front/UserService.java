@@ -8,5 +8,6 @@ public interface UserService {
 
 	void updateUser(User uu);
 
+	User findUserById(Integer id);
 
 }

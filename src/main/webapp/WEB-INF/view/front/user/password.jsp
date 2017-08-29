@@ -13,7 +13,59 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/profile.css">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
-
+    <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/messages_zh.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
+	<link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
+	<script type="text/javascript">
+	$(function(){
+		$("#bobo01").validate({
+			rules:{
+				oldPassword:{
+					required:true
+				},
+				newPassword:{
+					required:true,
+					minlength:2,
+					maxlength:16
+				},
+				newPasswordAgain:{
+					required:true,
+					equalTo:"[name=newPassword]"
+				}
+			},
+			messages:{
+				oldPassword:{
+					required:"旧密码不能為空"
+				},
+				newPassword:{
+					required:"密码不能為空",
+					minlength:"密码太短",
+					maxlength:"密码太长"
+				},
+				newPasswordAgain:{
+					required:"确认密码不能为空",
+					equalTo:"两次密码不一致"
+				}
+			}
+		});
+	});
+	function bobo02(){
+		$.confirm({
+		    title: '警告!',
+		    content: '修改密码后将重新登录!',
+		    buttons: {
+		                     确定修改: function () {
+		            $("#bobo01").submit();
+		        },
+		                    还是算了: function () {
+		            return;
+		        }
+		    }
+		});
+	}
+	</script>
 </head>
 
 <body class="w100">
@@ -23,18 +75,18 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                 <ul class="profile_tab_header f_left clearfix">
-                    <li><a href="front/user/profile.do">更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/profile.do?id=${user.id}">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/avatar.do">更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/avatar.do?id=${user.id}">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/password.do">密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/password.do?id=${user.id}">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     <div class="proflle_tab_workplace clearfix">
                         <div class="profile_avatar_area">
                         
                            <c:if test="${empty user.headUrl}">
-		                         <img id="avatar"  src="static/img/avatar_lg.png" alt="">
+		                         <img id="avatar"  src="${pageContext.request.contextPath }/static/img/avatar_lg.png" alt="">
 		                      </c:if>
 		                      
 		                      <c:if test="${not empty user.headUrl}">
@@ -50,7 +102,7 @@
 				                <strong>${message}</strong>
 				            </div>
 				            </c:if>
-                            <form action="front/user/password.do" method="post">
+                            <form action="${pageContext.request.contextPath }/front/user/password.do" method="post" id="bobo01">
                                 <div class="form_group">
                                     <span class="dd">旧&#x3000;密&#x3000;码：</span>
                                     <input type="password" id="oldPassword" name="oldPassword">
@@ -64,8 +116,10 @@
                                     <input type="password" id="newPassword02" name="newPasswordAgain">
                                 </div>
                                 <div class="form_submit dd">
-                                    <input type="submit" value="保&#x3000;存">
+                                	<input type="hidden" value="${user.id}" name="id">
+                                    <input type="button" value="保&#x3000;存" onclick="bobo02()">
                                 </div>
+                                <p style="color: red">${cuocuocuo}</p>
                             </form>
                         </div>
                     </div>

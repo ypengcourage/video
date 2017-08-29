@@ -23,27 +23,27 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                <ul class="profile_tab_header f_left clearfix">
-                    <li><a href="${pageContext.request.contextPath }/front/user/profile.do">更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/profile.do?id=${user.id}">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="${pageContext.request.contextPath }/front/user/avatar.do">更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/avatar.do?id=${user.id}">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="${pageContext.request.contextPath }/front/user/password.do">密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/password.do?id=${user.id}">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     <div class="proflle_tab_workplace clearfix">
                         <div class="profile_avatar_area">
-                            <c:if test="${empty _front_user.headUrl}">
+                            <c:if test="${empty user.headUrl}">
                                  <img  src="${pageContext.request.contextPath }/static/img/avatar_lg.png">
                             </c:if>
                             
-                            <c:if test="${not empty _front_user.headUrl}">
-                                  <img width="200px" height="200px" src="${_front_user.headUrl}">
+                            <c:if test="${not empty user.headUrl}">
+                                  <img width="200px" height="200px" src="${user.headUrl}">
                             </c:if>
                             
                             <p style="text-align: center;">当前头像</p>
                         </div>
                         <div class="profile_ifo_area">
-                            <form id="upload_form" enctype="multipart/form-data" method="post" action="avatar.do" >
+                            <form id="upload_form" enctype="multipart/form-data" method="post" action="${pageContext.request.contextPath }/front/user/avatar.do?id=${_front_user.id}">
                                 <p>请选择图像文件</p>
                                 <div>
                                 <input type="file" class="form-control" name="image_file" id="image_file" accept="image/png,image/jpeg,image/jpg"/>

@@ -25,18 +25,18 @@
             <h2>我的资料</h2>
             <div id="profile_tab">
                 <ul class="profile_tab_header f_left clearfix">
-                    <li><a href="front/user/profile.do">更改资料</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/profile.do?id=${user.id}">更改资料</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/avatar.do">更改头像</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/avatar.do?id=${user.id}">更改头像</a></li>
                     <li class="profile_tab_line">|</li>
-                    <li><a href="front/user/password.do">密码安全</a></li>
+                    <li><a href="${pageContext.request.contextPath }/front/user/password.do?id=${user.id}">密码安全</a></li>
                 </ul>
                 <div class="proflle_tab_body">
                     
                     <div class="proflle_tab_workplace clearfix">
                         <div class="profile_avatar_area">
                             <c:if test="${empty user.headUrl}">
-		                         <img id="avatar" src="static/img/avatar_lg.png" alt="">
+		                         <img id="avatar" src="${pageContext.request.contextPath }/static/img/avatar_lg.png" alt="">
 		                      </c:if>
 		                      
 		                      <c:if test="${not empty user.headUrl}">

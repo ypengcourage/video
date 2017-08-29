@@ -1,5 +1,6 @@
 package com.zhiyou100.video.service.front.Impl;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,13 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateUser(User uu) {
+		uu.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		um.updateByPrimaryKeySelective(uu);
+	}
+
+	@Override
+	public User findUserById(Integer id) {
+		// TODO Auto-generated method stub
+		return um.selectByPrimaryKey(id);
 	}
 }
