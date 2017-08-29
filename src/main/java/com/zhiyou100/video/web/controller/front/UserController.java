@@ -99,6 +99,7 @@ public class UserController {
 	@RequestMapping(value="/front/user/password.do",method=RequestMethod.POST)
 	public String userPassword(Integer id,Model md,String oldPassword,String newPassword,HttpSession session) {
 		String str= "" ;
+		
 		User user = us.findUserById(id);
 		String password = user.getPassword();
 		oldPassword = MD5Utils.getMD5(oldPassword);
