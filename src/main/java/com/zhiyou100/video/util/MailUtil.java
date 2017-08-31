@@ -16,7 +16,7 @@ public class MailUtil {
 		//如果用qq邮箱不用修改，如果用163邮箱，修改为smtp.163.com
 		private static String myEmailSMTPHost = "smtp.qq.com";
 		
-		private static String sendUser = "呵呵";
+		private static String sendUser = "社会你鹏哥,头铁话还多";
 
 	    /**  
 	    * @Title: send  

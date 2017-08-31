@@ -3,7 +3,7 @@
 <footer>
 	<ul>
 		<li>
-			<img src="static/img/footer_logo.png" alt="" draggable="false">
+			<img src="${pageContext.request.contextPath }/static/img/footer_logo.png" alt="" draggable="false">
 		</li>
 		<li class="mt25">
 			<h3>各校区地址</h3>
@@ -39,15 +39,15 @@
 <div class="mask hidden" id="loginDiv">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="static/img/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/static/img/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="loginForm" action="front/user/login.do" method="post">
+			<form id="loginForm" action="${pageContext.request.contextPath }/front/user/login.do" method="post">
 				<h3>快速登录</h3>
 				<input type="email" id="loginEmail" placeholder="请输入邮箱" name="email">
 				<input type="password" id="loginPassword" placeholder="请输入密码" name="password">
 				<div id="forget">
-					<a href="forgetpwd.do">忘记密码？</a>
+					<a href="${pageContext.request.contextPath }/front/user/forgetpwd.do">忘记密码？</a>
 				</div>
 				<input type="submit" value="登&#x3000;录">
 			</form>
@@ -60,10 +60,10 @@
 <div class="mask hidden" id="regDiv">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="static/img/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/static/img/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
-			<form id="regForm" action="front/user/regist.do" method="post">
+			<form id="regForm" action="${pageContext.request.contextPath }/front/user/regist.do" method="post">
 				<h3>新用户注册</h3>
 				<input type="email" id="regEmail" placeholder="请输入邮箱" name="email">
 				<input type="password" id="regPsw" placeholder="请输入密码" name="password">

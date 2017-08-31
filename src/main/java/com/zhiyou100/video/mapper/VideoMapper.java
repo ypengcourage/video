@@ -44,4 +44,6 @@ public interface VideoMapper {
 
 	List<speakerVO> findstatavg();
 
+	List<Video> selectByCourseId(Integer id);
+
 }

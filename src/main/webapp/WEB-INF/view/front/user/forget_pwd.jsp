@@ -24,16 +24,21 @@
     </header>
     <main>
         <div class="container">
-            <form class="ma" action="forgetpwd.do" method="post" >
+            <form class="ma" action="${pageContext.request.contextPath }/front/user/forgetpwd.do" method="post" >
                 <div class="form_header">
                     <div class="form_title">
                         <h2>忘记密码</h2>
                         <span>通过注册邮箱重设密码</span>
                     </div>
                     <div class="form_back">
-                        <a href="index.do">返回立即登录</a>
+                        <a href="${pageContext.request.contextPath }/index.jsp">返回立即登录</a>
                     </div>
                 </div>
+                <c:if test="${not empty message}">
+				            <div>
+				                <strong>${message}</strong>
+				            </div>
+				         </c:if>
                 <div class="form_body">
                     <input type="email" placeholder="请输入登录邮箱" name="email" id="email">
                     <input type="text" placeholder="请输入验证码" name="captcha"><input type="button" value="发邮件获取验证码" onclick="submitEmail();">
@@ -55,7 +60,6 @@
 			//改为ajax提交邮箱
 			if(email!=null&&email!=''){
 				$.post('sendemail.do',{email:email},function(data){
-					console.log(data);
 					if(data.success){
 						alert('验证码已发送到邮箱，请注意查收');
 					}else{

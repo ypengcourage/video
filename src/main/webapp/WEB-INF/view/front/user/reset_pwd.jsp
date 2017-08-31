@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,18 +13,51 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/forget_password.css">
     <link rel="icon" href="favicon.png" type="image/png">
     <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
-    
+    <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/messages_zh.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
+	<link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
+	<script type="text/javascript">
+	$(function(){
+		$("#bobo01").validate({
+			rules:{
+				password:{
+					required:true,
+					minlength:2,
+					maxlength:16
+				},
+				pwdAgain:{
+					required:true,
+					equalTo:"[name=password]"
+				}
+			},
+			messages:{
+				password:{
+					required:"密码不能為空",
+					minlength:"密码太短",
+					maxlength:"密码太长"
+				},
+				pwdAgain:{
+					required:"确认密码不能为空",
+					equalTo:"两次密码不一致"
+				}
+			}
+		});
+	});
+	</script>
 </head>
 
 <body>
     <header>
         <div class="container">
-            <img src="static/img/logo.png" alt="智游">
+            <img src="${pageContext.request.contextPath }/static/img/logo.png" alt="智游">
         </div>
     </header>
     <main>
         <div class="container">
-            <form class="ma" action="resetpwd.do" method="post">
+       					 
+            <form class="ma" action="${pageContext.request.contextPath }/front/user/resetpwd.do" method="post" id="bobo01">
                <input type="hidden" name="email" value="${email}"/>
                 <input type="hidden" name="captcha" value="${captcha}"/>
                 <div class="form_header">
@@ -35,7 +69,7 @@
                 <div class="form_body">
                     <input type="password" placeholder="请输入新密码" id="password" name="password">
                     <input type="password" style="width:100%" placeholder="再次输入新密码" id="password02" name="pwdAgain">
-                    <input type="submit" style="margin:0px;width:100%" value="提交">
+                    <input type="submit" style="margin:0px;width:100%" value="提交前往登录">
                 </div>
                 
             </form>

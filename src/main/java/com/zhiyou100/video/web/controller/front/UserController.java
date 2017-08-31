@@ -2,13 +2,13 @@ package com.zhiyou100.video.web.controller.front;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
-import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +21,27 @@ import com.zhiyou100.video.model.User;
 import com.zhiyou100.video.model.UserVO;
 import com.zhiyou100.video.service.front.UserService;
 import com.zhiyou100.video.util.MD5Utils;
+import com.zhiyou100.video.util.MailUtil;
 
 @Controller
 public class UserController {
 	@Autowired
 	UserService us;
+	
+	@RequestMapping(value="front/user/regist.do",method=RequestMethod.POST)
+	@ResponseBody
+	public UserVO userRegist(User uu) {
+		int id = us.findIdByEmail(uu.getEmail());
+		System.out.println(uu);
+		UserVO vo = new UserVO();
+		if(id == 0){
+			us.addUser(uu);
+			vo.setSuccess(true);
+		}else{
+			vo.setMessage("该邮箱已注册,可以在登录窗口点击忘记密码,重新设置登录密码");
+		}
+		return vo;
+	}
 	
 	@RequestMapping(value="/front/user/login.do",method=RequestMethod.POST)
 	@ResponseBody
@@ -96,6 +112,7 @@ public class UserController {
 		md.addAttribute("user",us.findUserById(id));
 		return "/front/user/password";
 	}
+	
 	@RequestMapping(value="/front/user/password.do",method=RequestMethod.POST)
 	public String userPassword(Integer id,Model md,String oldPassword,String newPassword,HttpSession session) {
 		String str= "" ;
@@ -110,11 +127,68 @@ public class UserController {
 			session.invalidate();
 			str = "redirect:/index.jsp";
 		}else{
-			md.addAttribute("cuocuocuo","密码错误");
+			md.addAttribute("message","密码错误,修改未完成");
 			str = "/front/user/password";
 		}
 		md.addAttribute("user",user);
 		return str;
+	}
+	
+	@RequestMapping(value="/front/user/forgetpwd.do",method=RequestMethod.GET)
+	public String forgetpwd(){
+		return "/front/user/forget_pwd";
+	}
+	
+	@RequestMapping(value="/front/user/forgetpwd.do",method=RequestMethod.POST)
+	public String forgetpwd(String captcha,String email,Model md){
+		String str = "";
+		String result = us.selectCaptcha(captcha,email);
+		if(result.equals("success")){
+			md.addAttribute("captcha",captcha);
+			md.addAttribute("email",email);
+			str = "/front/user/reset_pwd";
+		}else{
+			md.addAttribute("message","验证码错误,你可以重新发送");
+			str ="/front/user/forget_pwd";
+		}
+		return str;
+	}
+	
+	@RequestMapping("/front/user/sendemail.do")
+	@ResponseBody
+	public UserVO sendemail(String email) throws Exception{
+	/*	Random ran = new Random();
+		int a = ran.nextInt(90000) + 10000;
+		String str = ""+a;
+		User uu = us.findUserByEmail(email);
+		UserVO vo = new UserVO();
+		if(uu != null){
+			MailUtil.send(email, "智游集团", "智游集团验证码:"+str+",不要告诉其他人哦!");
+			uu.setCaptcha(str);
+			us.updateUser(uu);
+			vo.setSuccess(true);
+		}else{
+			vo.setMessage("这个邮箱没有注册哦,快去注册吧");
+		}*/
+		
+		User uu = us.findUserByEmail(email);
+		UserVO vo = new UserVO();
+		if(uu != null){
+			MailUtil.send(email, "智游集团", "智游集团验证码:"+uu.getCaptcha()+",不要告诉其他人哦!");
+			vo.setSuccess(true);
+		}else{
+			vo.setMessage("这个邮箱没有注册哦,快去注册吧");
+		}
+		return vo;
+	}
+	
+	@RequestMapping(value="/front/user/resetpwd.do",method=RequestMethod.POST)
+	public String resetpwd(User uu){
+		//System.out.println(uu);
+		int id = us.findIdByEmail(uu.getEmail());
+		uu.setId(id);
+		us.updateUser(uu);
+		return "redirect:/index.jsp";
 	}
 	
 }

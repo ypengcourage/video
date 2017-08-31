@@ -31,7 +31,7 @@ $(function(){
 			//console.log($('#loginForm').serialize());
 			//使用ajax的post方法提交登录信息
 			//alert($('#loginForm').serialize());
-			$.post('front/user/login.do',$('#loginForm').serialize(),function(result){
+			$.post('/maven-ssm2/front/user/login.do',$('#loginForm').serialize(),function(result){
 				//console.log(result);
 				if(result.success){
 					//登录成功,刷新页面
@@ -63,10 +63,10 @@ $(function(){
 	$('#regForm').validate({
 		submitHandler:function(form){
 			//ajax提交注册信息，并且返回注册结果
-			console.log($('#regForm').serialize());
+			//console.log($('#regForm').serialize());
 			//使用ajax的post方法提交注册信息
-			$.post('front/user/regist.do',$('#regForm').serialize(),function(result){
-				console.log(result);
+			$.post('/maven-ssm2/front/user/regist.do',$('#regForm').serialize(),function(result){
+				//console.log(result);
 				if(result.success){
 					//注册成功,刷新页面
 					location.reload();

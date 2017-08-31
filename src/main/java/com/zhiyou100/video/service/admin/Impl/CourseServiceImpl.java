@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.zhiyou100.video.mapper.CourseMapper;
 import com.zhiyou100.video.mapper.SubjectMapper;
 import com.zhiyou100.video.model.Course;
+import com.zhiyou100.video.model.CourseExample;
 import com.zhiyou100.video.model.Subject;
 import com.zhiyou100.video.service.admin.CourseService;
 import com.zhiyou100.video.util.Page;
@@ -64,6 +65,20 @@ public class CourseServiceImpl implements CourseService {
 	public void deleteCourse(int id) {
 		cm.deleteByPrimaryKey(id);
 		
+	}
+
+	@Override
+	public Subject findSubjectById(int subjectId) {
+		Subject subject = sbm.selectByPrimaryKey(subjectId);
+		return subject;
+	}
+
+	@Override
+	public List<Course> findCourseBysubjectId(int subjectId) {
+		CourseExample example = new CourseExample();
+		example.createCriteria().andSubjectIdEqualTo(subjectId);
+		List<Course> list = cm.selectByExample(example);
+		return list;
 	}
 
 

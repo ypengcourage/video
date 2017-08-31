@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
+<%--     <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
-    <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script> --%>
  	<style>
  	</style>
   </head>

@@ -101,7 +101,7 @@
 				            <div>
 				                <strong>${message}</strong>
 				            </div>
-				            </c:if>
+				         </c:if>
                             <form action="${pageContext.request.contextPath }/front/user/password.do" method="post" id="bobo01">
                                 <div class="form_group">
                                     <span class="dd">旧&#x3000;密&#x3000;码：</span>
@@ -119,7 +119,6 @@
                                 	<input type="hidden" value="${user.id}" name="id">
                                     <input type="button" value="保&#x3000;存" onclick="bobo02()">
                                 </div>
-                                <p style="color: red">${cuocuocuo}</p>
                             </form>
                         </div>
                     </div>

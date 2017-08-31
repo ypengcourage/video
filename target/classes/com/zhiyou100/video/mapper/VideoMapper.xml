@@ -13,6 +13,8 @@
     <result column="insert_time" property="insertTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="video_play_times" property="videoPlayTimes" jdbcType="INTEGER" />
+    <result column="course_name" property="courseName"/>
+    <result column="speaker_name" property="speakerName" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -356,6 +358,8 @@
   		select c.course_name courseName,avg(video_play_times) as times from video v left join course c on c.id = v.course_id group by c.course_name order by c.id asc
   </select>
   
-  
+  <select id="selectByCourseId" parameterType="integer" resultMap="BaseResultMap">
+  		select v.*,c.course_name,s.speaker_name from video v left join course c on v.course_id=c.id left join speaker s on v.speaker_id=s.id where v.course_id=#{v}
+  </select>
   
 </mapper>

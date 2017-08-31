@@ -19,7 +19,7 @@
 		<div class="container clearfix">
 			<ul class="clearfix f_left">
 				<li><a href="${pageContext.request.contextPath }/index.jsp">首页</a></li>
-				<li class="menu_active"><a href="${pageContext.request.contextPath }/front/user/index.do">个人中心</a></li>
+				<li class="menu_active"><a href="${pageContext.request.contextPath }/front/user/index.do?id=${_front_user.id}">个人中心</a></li>
 			</ul>
 			<div id="user_bar">
 				<a href="front/user/index.action">

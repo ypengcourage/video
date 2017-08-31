@@ -13,8 +13,8 @@
     <link href="${pageContext.request.contextPath }/static/css/bootstrap.min.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath }/static/js/jquery-1.12.4.min.js"></script>
     <script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
-    <link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
 	<script type="text/javascript" src="${pageContext.request.contextPath }/static/js/jquery-confirm.js"></script>
+	<link  href="${pageContext.request.contextPath }/static/css/jquery-confirm.css" rel="stylesheet" >
  	<script type="text/javascript">
  	var count=0;
  	$(function(){
@@ -41,10 +41,6 @@
 		 	        }
 		 	    }
 		 	});
- 			/* if(confirm("确定要删除记录吗?")){
- 				var aa = this.name;
- 				location.href="${pageContext.request.contextPath }/video/deleteVideo.action?id="+aa;
- 			} */
  		});
  		$("input[name=bobo02]").click(function(){
  			var cc = this.checked;
@@ -95,39 +91,6 @@
  			}
  		});
  	});
- 	/* function bobo(xx){
- 		var arr = document.getElementsByName("xuanze");
- 		for(var i = 0;i < arr.length;i++){
- 				arr[i].checked = xx;
- 		}
- 		if(xx){
- 			count=arr.length;
- 		}else {
- 			count=0;
-		}
- 		document.getElementsByTagName("span")[0].innerHTML=count;
- 	}
-	function delete1(){
-	   var orConfirm = confirm("确定要删除此条记录吗?");
-	   return (orConfirm); 
-	   //第一个参数表示提示框的标题,第二个参数表示框中文本框的内容,两个都可以省略
-	   //返回值表示提示框中的输入框内容,只有点击确定以后才会进行返回
-	}
-	function deleteAll(){
-		var orConfirm = confirm("确定要删除这些记录吗?");
-		   if(orConfirm == true){
-			   document.getElementsByTagName("form")[1].submit();
-		   }
-	}
-	function selectBox(the){
-		//alert(count);
-		if(the.checked==true){
-			count++;
-		}else{
-			count--;
-		}
-		document.getElementsByTagName("span")[0].innerHTML=count;
-	} */
 	</script>
   </head>
   <body>

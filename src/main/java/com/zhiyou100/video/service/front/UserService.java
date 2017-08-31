@@ -10,4 +10,13 @@ public interface UserService {
 
 	User findUserById(Integer id);
 
+	void addUser(User uu);
+
+	User findUserByEmail(String email);
+
+	String selectCaptcha(String captcha, String email);
+
+	int findIdByEmail(String email);
+
+
 }

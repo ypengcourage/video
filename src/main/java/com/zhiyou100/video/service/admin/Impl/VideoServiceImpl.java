@@ -94,10 +94,24 @@ public class VideoServiceImpl implements VideoService {
 		//Double[] arr1 = (Double[]) arr;
 		return Arrays.toString(arr);
 	}
+	@Override
+	public List<Video> findVideoByCourseId(Integer id) {
+/*		VideoExample example = new VideoExample();
+		example.createCriteria().andCourseIdEqualTo(id);
+		List<Video> list = vm.selectByExample(example);*/
+		List<Video> list = vm.selectByCourseId(id);
+		//System.out.println(list);
+		return list;
+	}
+	@Override
+	public void addVideoPlayTimes(Integer videoId) {
+		Video video = vm.selectByPrimaryKey(videoId);
+		Integer times = video.getVideoPlayTimes();
+		video.setVideoPlayTimes(times+1);
+		vm.updateByPrimaryKeySelective(video);
+	}
 
 }
-
-
 
 /*if(videoCourse == 0){
 			if(videoSpeaker == 0){

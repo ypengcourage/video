@@ -22,5 +22,9 @@ public interface CourseService {
 
 	void updateCourse(Course cc);
 
+	Subject findSubjectById(int subjectId);
+
+	List<Course> findCourseBysubjectId(int subjectId);
+
 
 }

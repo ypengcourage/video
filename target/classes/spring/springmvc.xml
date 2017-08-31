@@ -39,12 +39,20 @@
 <property name="maxInMemorySize" value="6291456"></property>
 </bean>
 
-<!-- <mvc:interceptors>
+<mvc:interceptors>
 	<mvc:interceptor>
-		<mvc:mapping path="/**"/>
+		<mvc:mapping path="*.action"/>
 		<mvc:exclude-mapping path="/admin/login.action"/>
-		<mvc:exclude-mapping path="/front/user/login.action"/>
 		<bean class="com.zhiyou100.video.web.interceptor.CustomInterceptor"></bean>
 	</mvc:interceptor>
-</mvc:interceptors> -->
+	<mvc:interceptor>
+		<mvc:mapping path="/front/user/*"/>
+		<mvc:exclude-mapping path="/front/user/login.do"/>
+		<mvc:exclude-mapping path="/front/user/regist.do"/>
+		<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
+		<mvc:exclude-mapping path="/front/user/sendemail.do"/>
+		<mvc:exclude-mapping path="/front/user/resetpwd.do"/>
+		<bean class="com.zhiyou100.video.web.interceptor.FrontCustominterceptor"></bean>
+	</mvc:interceptor>
+</mvc:interceptors>
 </beans>

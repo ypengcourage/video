@@ -26,4 +26,8 @@ public interface VideoService {
 
 	String listToArray1(List<Double> li2);
 
+	List<Video> findVideoByCourseId(Integer id);
+
+	void addVideoPlayTimes(Integer videoId);
+
 }
