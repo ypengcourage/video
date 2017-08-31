@@ -24,7 +24,7 @@
 		 	    buttons: {
 		 	    	确定删除 : function () {
 		 	    		 $.get(
-		 	    			"${pageContext.request.contextPath }/course/deleteCourse.action",
+		 	    			"${pageContext.request.contextPath }/admin/course/deleteCourse.action",
 		 	    			"id="+aa,
 		 	    			function (mag){
 		 	    				if(mag=="success"){
@@ -54,7 +54,7 @@
 		        <h1>课程列表-课程管理</h1>
 		    </div>
 		    
-		    <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath }/course/addCourse.action">添加课程</a>
+		    <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath }/admin/course/addCourse.action">添加课程</a>
 		    
 			<div class="bs-example" data-example-id="hoverable-table">
 			    <table class="table table-hover">
@@ -76,7 +76,7 @@
 						          <td >${course.courseName}</td>
 						          <td >${course.subjectName}</td>
 						          <td >${course.courseDescr}</td>
-						          <td><a class="glyphicon glyphicon-edit " href="${pageContext.request.contextPath }/course/updateCourse.action?id=${course.id}"></a></td>
+						          <td><a class="glyphicon glyphicon-edit " href="${pageContext.request.contextPath }/admin/course/updateCourse.action?id=${course.id}"></a></td>
 						          <td>
 						          <%-- <a class="glyphicon glyphicon-trash " href="${pageContext.request.contextPath }/course/deleteCourse.action?id=${course.id}"></a> --%>
 						          <a class="glyphicon glyphicon-trash bobo01" id="${course.id}"></a>
@@ -91,7 +91,7 @@
 					  </c:if>
 			      </tbody>
 			    </table>
-			    <goubo:page url="${pageContext.request.contextPath }/course/courseList.action"></goubo:page>
+			    <goubo:page url="${pageContext.request.contextPath }/admin/course/courseList.action"></goubo:page>
 			</div>
 		</div>
   </body>

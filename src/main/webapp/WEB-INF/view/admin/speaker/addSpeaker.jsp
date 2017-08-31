@@ -22,7 +22,7 @@
 		        <h1>添加主讲人-主讲人管理</h1>
 		    </div>
 		    
-		    <form class="form-horizontal" action="${pageContext.request.contextPath }/speaker/addSpeaker.action" method="post">
+		    <form class="form-horizontal" action="${pageContext.request.contextPath }/admin/speaker/addSpeaker.action" method="post">
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
 			    <div class="col-sm-10">

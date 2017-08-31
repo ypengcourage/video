@@ -16,7 +16,7 @@ import com.zhiyou100.video.service.admin.CourseService;
 import com.zhiyou100.video.util.Page;
 
 @Controller
-@RequestMapping("/course")
+@RequestMapping("/admin/course")
 public class CourseController {
 	@Autowired
 	CourseService cs;
@@ -55,7 +55,7 @@ public class CourseController {
 	@RequestMapping(value="/updateCourse.action",method=RequestMethod.POST)
 	public String updateCourse2(Course cc){
 		cs.updateCourse(cc);
-		return "redirect:/course/courseList.action";
+		return "redirect:/admin/course/courseList.action";
 	}
 	@RequestMapping("/deleteCourse.action")
 	@ResponseBody

@@ -26,7 +26,7 @@
 		 	    buttons: {
 		 	    	确定删除 : function () {
 		 	    		 $.get(
-		 	    			"${pageContext.request.contextPath }/video/deleteVideo.action",
+		 	    			"${pageContext.request.contextPath }/admin/video/deleteVideo.action",
 		 	    			"id="+aa,
 		 	    			function (mag){
 		 	    				if(mag=="success"){
@@ -104,10 +104,10 @@
 		        <h1>视频列表-视频管理</h1>
 		    </div>
 		    
-		    <a class="btn btn-primary" href="${pageContext.request.contextPath }/video/addVideo.action">添加视频</a>
+		    <a class="btn btn-primary" href="${pageContext.request.contextPath }/admin/video/addVideo.action">添加视频</a>
 		    <a class="btn btn-primary" id="bobo03"><font color="white">批量删除</font>&nbsp;&nbsp;<span class="badge">0</span></a>
 		    <div style="float: right;">
-	          <form class="navbar-form navbar-right"  action="${pageContext.request.contextPath }/video/videoList.action">
+	          <form class="navbar-form navbar-right"  action="${pageContext.request.contextPath }/admin/video/videoList.action">
 	            <div class="form-group">
 	              <input type="text" placeholder="视频标题" class="form-control" name="videoTitle" value="${speakervo.videoTitle }">
 	            </div>
@@ -133,7 +133,7 @@
 		    
 			
 			<div class="bs-example" data-example-id="hoverable-table">
-			    <form action="${pageContext.request.contextPath }/video/deleteAllVideo.action" id="bobo04">
+			    <form action="${pageContext.request.contextPath }/admin/video/deleteAllVideo.action" id="bobo04">
 			    <table class="table table-hover">
 			      <thead>
 			        <tr>
@@ -161,7 +161,7 @@
 					          <td>${video.courseName }</td>
 					          <td>${video.videoLength }</td>
 					          <td>${video.videoPlayTimes }</td>
-					          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/video/updateVideo.action?id=${video.id }"></a></td>
+					          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/admin/video/updateVideo.action?id=${video.id }"></a></td>
 					         <%--  <td><a class="glyphicon glyphicon-trash" id="bobo01" href="${pageContext.request.contextPath }/video/deleteVideo.action?id=${video.id }" onclick="return delete1()"></a></td> --%>
 					          <td><a class="glyphicon glyphicon-trash bobo01" id="${video.id }"></a></td>
 					        </tr>
@@ -174,7 +174,7 @@
 			      </tbody>
 			    </table>
 			    </form>
-			    <bobo:page url="${pageContext.request.contextPath }/video/videoList.action"></bobo:page>
+			    <bobo:page url="${pageContext.request.contextPath }/admin/video/videoList.action"></bobo:page>
 			</div>
 		</div>
   </body>

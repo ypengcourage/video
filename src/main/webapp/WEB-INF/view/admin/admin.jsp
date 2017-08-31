@@ -28,10 +28,10 @@
 	        </div>
 	        <div id="navbar" class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav">
-	            <li ${param.fromJsp=="video"?"class='active'":""}><a  href="${pageContext.request.contextPath }/video/videoList.action">视频管理</a></li>
-	            <li ${param.fromJsp=="speaker"?"class='active'":""}><a href="${pageContext.request.contextPath }/speaker/speakerList.action">主讲人管理</a></li>
-	            <li ${param.fromJsp=="course"?"class='active'":""}><a href="${pageContext.request.contextPath }/course/courseList.action">课程管理</a></li>
-				<li ${param.fromJsp=="statistics"?"class='active'":""}><a href="${pageContext.request.contextPath }/video/statshow.action">统计分析</a></li>
+	            <li ${param.fromJsp=="video"?"class='active'":""}><a  href="${pageContext.request.contextPath }/admin/video/videoList.action">视频管理</a></li>
+	            <li ${param.fromJsp=="speaker"?"class='active'":""}><a href="${pageContext.request.contextPath }/admin/speaker/speakerList.action">主讲人管理</a></li>
+	            <li ${param.fromJsp=="course"?"class='active'":""}><a href="${pageContext.request.contextPath }/admin/course/courseList.action">课程管理</a></li>
+				<li ${param.fromJsp=="statistics"?"class='active'":""}><a href="${pageContext.request.contextPath }/admin/video/statshow.action">统计分析</a></li>
 	          </ul>
 	        
 		      <div id="navbar" class="navbar-collapse collapse">

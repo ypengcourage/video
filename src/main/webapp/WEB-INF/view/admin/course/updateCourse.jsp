@@ -23,7 +23,7 @@
 		        <h1>编辑课程-课程管理</h1>
 		    </div>
 		    
-		    <form class="form-horizontal" action="${pageContext.request.contextPath }/course/updateCourse.action" method="post">
+		    <form class="form-horizontal" action="${pageContext.request.contextPath }/admin/course/updateCourse.action" method="post">
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">所属学科</label>
 			    <div class="col-sm-10">

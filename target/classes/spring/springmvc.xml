@@ -41,13 +41,13 @@
 
 <mvc:interceptors>
 	<mvc:interceptor>
-		<mvc:mapping path="*.action"/>
+		<mvc:mapping path="/admin/*"/>
 		<mvc:exclude-mapping path="/admin/login.action"/>
 		<bean class="com.zhiyou100.video.web.interceptor.CustomInterceptor"></bean>
 	</mvc:interceptor>
 	<mvc:interceptor>
 		<mvc:mapping path="/front/user/*"/>
-		<mvc:exclude-mapping path="/front/user/login.do"/>
+ 		<mvc:exclude-mapping path="/front/user/login.do"/>
 		<mvc:exclude-mapping path="/front/user/regist.do"/>
 		<mvc:exclude-mapping path="/front/user/forgetpwd.do"/>
 		<mvc:exclude-mapping path="/front/user/sendemail.do"/>
@@ -55,4 +55,5 @@
 		<bean class="com.zhiyou100.video.web.interceptor.FrontCustominterceptor"></bean>
 	</mvc:interceptor>
 </mvc:interceptors>
+
 </beans>

@@ -22,7 +22,7 @@
 		        <h1>编辑主讲人-主讲人管理</h1>
 		    </div>
 		    
-		    <form class="form-horizontal" action="${pageContext.request.contextPath }/speaker/updateSpeaker.action" method="post">
+		    <form class="form-horizontal" action="${pageContext.request.contextPath }/admin/speaker/updateSpeaker.action" method="post">
 			  <div class="form-group">
 			    <label for="inputEmail3" class="col-sm-2 control-label">名字</label>
 			    <div class="col-sm-10">
@@ -52,7 +52,7 @@
 			    <div class="col-sm-offset-2 col-sm-3">
 			    	<input type="hidden" name="id" value="${speaker.id}">
 			      <button type="submit" class="btn btn-primary">提交</button>
-			      <button type="button" class="btn btn-default">返回列表</button>
+			      <a type="button" class="btn btn-default" href="javascript:history.go(-1)">返回列表</a>
 			    </div>
 			  </div>
 			</form>

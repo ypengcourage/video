@@ -13,7 +13,7 @@ import com.zhiyou100.video.service.admin.SpeakerService;
 import com.zhiyou100.video.util.Page;
 
 @Controller
-@RequestMapping("/speaker")
+@RequestMapping("/admin/speaker")
 public class SpeakerController {
 	@Autowired
 	SpeakerService ss;
@@ -37,7 +37,7 @@ public class SpeakerController {
 	@RequestMapping(value="addSpeaker.action",method=RequestMethod.POST)
 	public String addSpeaker2(Speaker sk) {
 		ss.addpeaker(sk);
-		return "redirect:/speaker/speakerList.action";
+		return "redirect:/admin/speaker/speakerList.action";
 	}
 	@RequestMapping(value="updateSpeaker.action",method=RequestMethod.GET)
 	public ModelAndView updateSpeaker1(Integer id) {
@@ -50,7 +50,7 @@ public class SpeakerController {
 	@RequestMapping(value="updateSpeaker.action",method=RequestMethod.POST)
 	public String updateSpeaker2(Speaker sk) {
 		ss.updateSpeaker(sk);
-		return "redirect:/speaker/speakerList.action";
+		return "redirect:/admin/speaker/speakerList.action";
 	}
 	@RequestMapping("deleteSpeaker.action")
 	@ResponseBody

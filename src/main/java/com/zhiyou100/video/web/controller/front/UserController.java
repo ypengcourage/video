@@ -32,7 +32,7 @@ public class UserController {
 	@ResponseBody
 	public UserVO userRegist(User uu) {
 		int id = us.findIdByEmail(uu.getEmail());
-		System.out.println(uu);
+		//System.out.println(uu);
 		UserVO vo = new UserVO();
 		if(id == 0){
 			us.addUser(uu);
@@ -179,7 +179,6 @@ public class UserController {
 		}else{
 			vo.setMessage("这个邮箱没有注册哦,快去注册吧");
 		}
-		
 		return vo;
 	}
 	

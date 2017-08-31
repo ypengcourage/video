@@ -24,7 +24,7 @@
 		 	    buttons: {
 		 	    	确定删除 : function () {
 		 	    		 $.get(
-		 	    			"${pageContext.request.contextPath }/speaker/deleteSpeaker.action",
+		 	    			"${pageContext.request.contextPath }/admin/speaker/deleteSpeaker.action",
 		 	    			"id="+aa,
 		 	    			function (mag){
 		 	    				if(mag=="success"){
@@ -54,7 +54,7 @@
 		        <h1>主选人列表-主选人管理</h1>
 		    </div>
 		    
-		    <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath }/speaker/addSpeaker.action">添加主选人</a>
+		    <a type="button" class="btn btn-primary" href="${pageContext.request.contextPath }/admin/speaker/addSpeaker.action">添加主选人</a>
 		    <div style="float: right;">
 	          <form class="navbar-form navbar-right">
 	            <div class="form-group">
@@ -87,7 +87,7 @@
 			          <td>${speaker.speakerName }</td>
 			          <td>${speaker.speakerJob }</td>
 			          <td>${speaker.speakerDescr }</td>
-			          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/speaker/updateSpeaker.action?id=${speaker.id}"></a></td>
+			          <td><a class="glyphicon glyphicon-edit" href="${pageContext.request.contextPath }/admin/speaker/updateSpeaker.action?id=${speaker.id}"></a></td>
 			          <td>
 			          <%-- <a class="glyphicon glyphicon-trash" href="${pageContext.request.contextPath }/speaker/deleteSpeaker.action?id=${speaker.id}" onclick="return delete1()"></a> --%>
 			          <a class="glyphicon glyphicon-trash bobo01" id="${speaker.id}"></a>
@@ -96,7 +96,7 @@
 			      </c:forEach>
 			      </tbody>
 			    </table>
-			    <goubo:page url="${pageContext.request.contextPath }/speaker/speakerList.action"></goubo:page>
+			    <goubo:page url="${pageContext.request.contextPath }/admin/speaker/speakerList.action"></goubo:page>
 			</div>
 		</div>
   </body>

@@ -13,7 +13,7 @@
     </head>
 	<body>
 		    <jsp:include page="/WEB-INF/view/admin/admin.jsp">
-					<jsp:param value="course" name="fromJsp"/>
+					<jsp:param value="statistics" name="fromJsp"/>
 			</jsp:include>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
 	<div class="container theme-showcase" role="main">

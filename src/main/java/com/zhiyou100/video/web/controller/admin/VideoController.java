@@ -22,7 +22,7 @@ import com.zhiyou100.video.service.admin.VideoService;
 import com.zhiyou100.video.util.Page;
 
 @Controller
-@RequestMapping("/video")
+@RequestMapping("/admin/video")
 public class VideoController {
 	@Autowired
 	VideoService vs;
@@ -67,7 +67,7 @@ public class VideoController {
 	@RequestMapping(value="/addVideo.action",method=RequestMethod.POST)
 	public String addVideo2(Video vo){
 		vs.addVideo(vo);
-		return "redirect:/video/videoList.action";
+		return "redirect:/admin/video/videoList.action";
 	}
 	@RequestMapping(value="/updateVideo.action",method=RequestMethod.GET)
 	public ModelAndView updateVideo1(int id){
@@ -84,7 +84,7 @@ public class VideoController {
 	@RequestMapping(value="/updateVideo.action",method=RequestMethod.POST)
 	public String updateVideo2(Video vv){
 		vs.updateVideo(vv);
-		return "redirect:/video/videoList.action";
+		return "redirect:/admin/video/videoList.action";
 	}
 	@RequestMapping("/deleteVideo.action")
 	@ResponseBody
@@ -96,7 +96,7 @@ public class VideoController {
 	public String deleteVideoByIds(Integer [] xuanze){
 		List<Integer> asList = Arrays.asList(xuanze);
 		vs.deleteVideoByIds(asList);
-		return "redirect:/video/videoList.action";
+		return "redirect:/admin/video/videoList.action";
 	}
 	@RequestMapping("/statshow.action")
 	public ModelAndView statshow(){
