@@ -179,6 +179,7 @@ public class UserController {
 		}else{
 			vo.setMessage("这个邮箱没有注册哦,快去注册吧");
 		}
+		
 		return vo;
 	}
 	
