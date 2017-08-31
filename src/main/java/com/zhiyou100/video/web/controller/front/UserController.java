@@ -175,6 +175,7 @@ public class UserController {
 		UserVO vo = new UserVO();
 		if(uu != null){
 			
+			
 			MailUtil.send(email, "智游集团", "智游集团验证码:"+uu.getCaptcha()+",不要告诉其他人哦!");
 			vo.setSuccess(true);
 		}else{
